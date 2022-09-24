@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child:CatList(cats: cats, deleteFunc: deleteCatHandler, updateFunc: refreshData,)
       )
     ),
-    floatingActionButton: FloatingActionButton( backgroundColor: Colors.red, child: const Icon(Icons.add), onPressed: () async{
+    floatingActionButton: FloatingActionButton( backgroundColor: Colors.indigo, child: const Icon(Icons.add), onPressed: () async{
       var refreshList = await Navigator.pushNamed(context, "animalForm",arguments: {"screenFor":"creating"});
       if(refreshList == true) refreshData();
     },),

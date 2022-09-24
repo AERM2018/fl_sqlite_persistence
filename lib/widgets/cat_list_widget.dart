@@ -25,9 +25,9 @@ class _CatListState extends State<CatList> {
           builder: (context,AsyncSnapshot<List<Cat>> catsList) {
             if(catsList.hasData){
               if(catsList.data!.isEmpty){
-                return const Center(child: Text("There's no cats"));
+                return const Center(child: Text("There're no cats"));
               }else{
-                return ListView.separated(
+                return ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context,i) => GestureDetector(
                     onDoubleTap: ()async{
@@ -37,12 +37,15 @@ class _CatListState extends State<CatList> {
                         widget.updateFunc();
                       }
                     },
-                    child: ListTile(
-                      title: Text(catsList.data![i].name),
-                      subtitle: Text(catsList.data![i].race),
-                      trailing: IconButton(icon: const Icon(Icons.delete),onPressed: ()=>widget.deleteFunc(catsList.data![i].id),)),
+                    child: Card(
+                      margin: const EdgeInsets.only(top: 15),
+                      
+                      child: ListTile(
+                        title: Text(catsList.data![i].name),
+                        subtitle: Text(catsList.data![i].race),
+                        trailing: IconButton(icon: const Icon(Icons.delete),color: Colors.red,onPressed: ()=>widget.deleteFunc(catsList.data![i].id),)),
+                    ),
                   ), 
-                    separatorBuilder: (context, i) => const Divider(), 
                     itemCount: catsList.data!.length);
               }
             }else{
