@@ -25,7 +25,8 @@ class DbHelper{
       CREATE TABLE cats(
         id INTEGER PRIMARY KEY,
         race VARCHAR(50),
-        name VARCHAR(50)
+        name VARCHAR(50),
+        picPath VARCHAR(150)
       );
       '''
     );

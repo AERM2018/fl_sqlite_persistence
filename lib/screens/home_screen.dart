@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:persistence_app/helpers/db_helper.dart';
 import 'package:persistence_app/widgets/cat_list_widget.dart';
@@ -27,7 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
       )
     ),
     floatingActionButton: FloatingActionButton( backgroundColor: Colors.indigo, child: const Icon(Icons.add), onPressed: () async{
-      var refreshList = await Navigator.pushNamed(context, "animalForm",arguments: {"screenFor":"creating"});
+      var refreshList = await Navigator.pushNamed(context, "animalForm",arguments: {
+        "screenFor":"creating",
+      });
       if(refreshList == true) refreshData();
     },),
     );
@@ -41,4 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
   refreshData(){
     setState(() {});
   }
+
+  
 }

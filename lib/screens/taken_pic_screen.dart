@@ -19,7 +19,7 @@ class _TakenPicScreenState extends State<TakenPicScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = CameraController(widget.camera,ResolutionPreset.medium);
+    _controller = CameraController(widget.camera,ResolutionPreset.max);
    _initializeControllerFuture = _controller.initialize(); 
   }
 
@@ -53,7 +53,7 @@ class _TakenPicScreenState extends State<TakenPicScreen> {
             await _initializeControllerFuture;
             final image = await _controller.takePicture();
             if(!mounted) return;
-            await Navigator.of(context).push(MaterialPageRoute(builder: (context) => PicturesScreen(imagePath: image.path,)));
+            await Navigator.of(context).push(MaterialPageRoute(builder: (context) => PicturesScreen(imagePath: image.path,onlySee: false,)));
           } catch (e) {
             print(e);
           }

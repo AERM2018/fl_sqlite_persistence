@@ -5,24 +5,21 @@ import 'package:persistence_app/screens/taken_pic_screen.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  final cameras = await availableCameras();
-  final firstCamera = cameras.first;
-  runApp(MyApp(camera: firstCamera));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final CameraDescription camera;
-  const MyApp({Key? key, required this.camera}):super(key: key);
+  const MyApp({Key? key}):super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: 'takenPicture',
+      initialRoute: 'home',
       routes: {
         'home':(context)=> const HomeScreen(),
         'animalForm':(context)=> const AnimalFormScreen(),
-        'takenPicture':(context)=> TakenPicScreen(camera: camera,)
+        // 'takenPicture':(context)=> TakenPicScreen(camera: camera,)
       },
       theme: ThemeData.light().copyWith(
         appBarTheme: const AppBarTheme(
